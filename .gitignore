@@ -1,0 +1,8 @@
+.venv/
+__pycache__/
+*.pyc
+results/
+*.png
+*.mp4
+*.gif
+.DS_Store
