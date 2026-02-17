@@ -1,8 +1,30 @@
-.venv/
+# python
 __pycache__/
 *.pyc
+*.pyo
+*.pyd
+*.log
+
+# venv
+.venv/
+venv/
+env/
+
+# data / downloads
+data/
+*.zip
+*.tar
+*.gz
+*.7z
+
+# results / media
 results/
 *.png
-*.mp4
+*.jpg
+*.jpeg
 *.gif
+*.mp4
+
+# OS
 .DS_Store
+Thumbs.db
