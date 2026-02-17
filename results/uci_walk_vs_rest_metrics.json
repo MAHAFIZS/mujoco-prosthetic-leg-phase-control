@@ -1,0 +1,17 @@
+{
+  "task": "uci_walk_vs_rest",
+  "n_train": 7352,
+  "n_test": 2947,
+  "walk_frac_train": 0.4468171926006529,
+  "walk_frac_test": 0.4706481167288768,
+  "confusion_matrix": [
+    [
+      1560,
+      0
+    ],
+    [
+      0,
+      1387
+    ]
+  ]
+}

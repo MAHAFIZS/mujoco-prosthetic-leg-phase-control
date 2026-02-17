@@ -1,0 +1,57 @@
+<mujoco model="leg2dof">
+  <compiler angle="radian" coordinate="local" inertiafromgeom="true"/>
+  <option timestep="0.002" gravity="0 0 -9.81" integrator="RK4"/>
+  <size njmax="2000" nconmax="500"/>
+  <default>
+    <joint damping="0.4" armature="0.02" limited="true"/>
+    <geom friction="1.0 0.02 0.001" density="800" rgba="0.8 0.8 0.8 1"/>
+    <motor ctrllimited="true" ctrlrange="-150 150"/>
+  </default>
+
+  <worldbody>
+    <!-- Ground -->
+    <geom name="ground" type="plane" size="5 5 0.1" rgba="0.15 0.15 0.15 1"/>
+
+    <!-- A simple planar leg: hip (fixed) -> thigh -> knee -> shank -> ankle -> foot -->
+    <body name="hip" pos="0 0 0.8">
+      <!-- Hip anchor is fixed in space (no hip joint); you can add hip later if you want. -->
+      <geom name="hip_vis" type="sphere" size="0.03" rgba="0.2 0.6 0.9 1" contype="0" conaffinity="0"/>
+
+      <body name="thigh" pos="0 0 0">
+        <!-- Thigh visual/collision -->
+        <geom name="thigh_geom" type="capsule" fromto="0 0 0  0 0 -0.35" size="0.05" rgba="0.7 0.7 0.7 1"/>
+
+        <body name="shank" pos="0 0 -0.35">
+          <!-- Knee hinge: rotate about Y (sagittal plane flex/extend) -->
+          <joint name="knee" type="hinge" axis="0 1 0" range="-1.7 0.2"/>
+
+          <geom name="shank_geom" type="capsule" fromto="0 0 0  0 0 -0.35" size="0.045" rgba="0.75 0.75 0.75 1"/>
+
+          <body name="foot" pos="0 0 -0.35">
+            <!-- Ankle hinge: rotate about Y -->
+            <joint name="ankle" type="hinge" axis="0 1 0" range="-0.9 0.9"/>
+
+            <!-- Foot (a small box) -->
+            <geom name="foot_geom" type="box" size="0.12 0.05 0.025" pos="0.10 0 -0.02" rgba="0.9 0.7 0.2 1"/>
+            <!-- Heel contact bump -->
+            <geom name="heel_geom" type="sphere" size="0.03" pos="-0.02 0 -0.02" rgba="0.9 0.7 0.2 1"/>
+
+            <!-- Useful site for logging -->
+            <site name="foot_site" pos="0.10 0 -0.02" size="0.01" rgba="1 0 0 1"/>
+          </body>
+        </body>
+      </body>
+    </body>
+  </worldbody>
+
+  <actuator>
+    <!-- Torque motors -->
+    <motor name="knee_motor" joint="knee"/>
+    <motor name="ankle_motor" joint="ankle"/>
+  </actuator>
+
+  <keyframe>
+    <!-- Start with slightly flexed knee so it settles nicely -->
+    <key name="home" qpos="0.0 -0.35"/>
+  </keyframe>
+</mujoco>

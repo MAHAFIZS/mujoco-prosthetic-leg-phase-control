@@ -1,0 +1,7 @@
+{
+  "task": "uci_proxy_stance_vs_swing",
+  "threshold": 0.1347803823207864,
+  "min_duration": 8,
+  "n_samples": 10299,
+  "stance_fraction": 0.5046120982619672
+}

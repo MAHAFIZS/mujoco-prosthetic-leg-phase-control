@@ -1,0 +1,63 @@
+{
+  "record_id": "als1",
+  "split": "time",
+  "train_frac": 0.7,
+  "n_windows": 5997,
+  "n_train": 4197,
+  "n_test": 1800,
+  "stance_frac": 0.5209271302317826,
+  "features_dim": 14,
+  "confusion_matrix": [
+    [
+      239,
+      489
+    ],
+    [
+      396,
+      676
+    ]
+  ],
+  "report": {
+    "0": {
+      "precision": 0.3763779527559055,
+      "recall": 0.3282967032967033,
+      "f1-score": 0.35069699192956716,
+      "support": 728.0
+    },
+    "1": {
+      "precision": 0.5802575107296137,
+      "recall": 0.6305970149253731,
+      "f1-score": 0.6043808672329012,
+      "support": 1072.0
+    },
+    "accuracy": 0.5083333333333333,
+    "macro avg": {
+      "precision": 0.4783177317427596,
+      "recall": 0.47944685911103824,
+      "f1-score": 0.4775389295812342,
+      "support": 1800.0
+    },
+    "weighted avg": {
+      "precision": 0.49779955617135846,
+      "recall": 0.5083333333333333,
+      "f1-score": 0.5017798332213306,
+      "support": 1800.0
+    }
+  },
+  "label_info": {
+    "symbol_counts": {
+      "/": 3314,
+      "L": 1063,
+      "Q": 2050,
+      "j": 1458,
+      "~": 618
+    },
+    "toggle_symbols": [
+      "/",
+      "Q"
+    ],
+    "n_toggle_events": 5364,
+    "start_in_contact": 1,
+    "stance_fraction": 0.5205222222222222
+  }
+}
